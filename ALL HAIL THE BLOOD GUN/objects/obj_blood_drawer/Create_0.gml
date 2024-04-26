@@ -1,7 +1,10 @@
-global.blood_x = [10000];
-global.blood_y = [10000];
+global.blood_x = [1];
+global.blood_y = [1];
 
-check_ix = 0;
-check_iy = 0;
+cx = 0;
+cy = 0;
 
-checks_per_frame = 100;
+function cleaner()
+{
+		
+}
