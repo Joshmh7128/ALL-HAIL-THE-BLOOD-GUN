@@ -26,6 +26,7 @@ public class SampleMapGenerator : MonoBehaviour
                 sprObj.AddComponent<SpriteRenderer>();
                 sprObj.GetComponent<SpriteRenderer>().sprite = groundTiles[Random.Range(0, groundTiles.Count)];
                 sprObj.transform.position = new Vector3(x, y, 5);
+                sprObj.transform.parent = transform;
                 // place either a wall or an enemy, this way we can't have both occur on the same tile
                 int j = Random.Range(0, 100);
                 if (j <= 1) Instantiate(sampleWall, new Vector3(x, y, -1), Quaternion.identity, transform);
