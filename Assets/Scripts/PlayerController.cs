@@ -10,12 +10,35 @@ public class PlayerController : MonoBehaviour
     Vector2 targetMove, finalMove;
     [SerializeField] float playerBoxFootprint; // the width and height 
 
+    // our animator
+    [SerializeField] PlayerAnimationController animationController;
+
+    // our public readonly velocity
+    public Vector2 Velocity
+    {
+        get
+        {
+            return velocity;
+        }
+        
+        private set
+        {
+            Velocity = velocity;
+        }
+    }
+
+    // internal velocity
+    private Vector2 velocity;
+    Vector2 lastPosition; // the last position we were at
+
     private void FixedUpdate()
     {
         // get input
         CaptureInput();
         // then move
         MovePlayer();
+        // then play our animations
+        AnimationAutoplay();
     }
 
     // get our player's input
@@ -34,6 +57,12 @@ public class PlayerController : MonoBehaviour
     // move our player
     void MovePlayer()
     {
+        // set our last position
+        lastPosition = transform.position;
+
+        // clamp target move
+        targetMove = Vector2.ClampMagnitude(targetMove, 1);
+
         // let's check if the position we want to move to is free, and then move there
         Vector2 targetPosition = (targetMove * moveSpeed * Time.fixedDeltaTime) + (Vector2)transform.position;
 
@@ -84,6 +113,26 @@ public class PlayerController : MonoBehaviour
     void ApplyMovement(Vector2 position)
     {
         transform.position = position;
+        // calculate velocity
+        velocity = lastPosition - (Vector2)transform.position;
+    }
+
+    // automatically choose and play our animations
+    void AnimationAutoplay()
+    {
+        bool mirror = false;
+        // default run animation is to the right, if we're moving to the left, mirror
+        if (velocity.x > 0)
+            mirror = true;
+
+        // if we're standing still
+        if (velocity.magnitude == 0)
+            animationController.ChangeAnimationState(PlayerAnimationController.AnimationStates.idle, mirror);
+
+        // if we moved, set to run
+        if (velocity.magnitude > 0)
+            animationController.ChangeAnimationState(PlayerAnimationController.AnimationStates.run, mirror);
+
     }
 
     // gizmos
