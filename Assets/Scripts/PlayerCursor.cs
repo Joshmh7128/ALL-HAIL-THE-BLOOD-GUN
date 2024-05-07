@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class PlayerCursor : MonoBehaviour
 {
+    public static PlayerCursor instance;
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
         Cursor.visible = false;

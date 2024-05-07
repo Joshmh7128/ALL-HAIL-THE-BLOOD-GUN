@@ -13,6 +13,13 @@ public class PlayerController : MonoBehaviour
     // our animator
     [SerializeField] PlayerAnimationController animationController;
 
+    // our player
+    public static PlayerController instance;
+    private void Awake()
+    {
+        instance = this;
+    }
+
     // our public readonly velocity
     public Vector2 Velocity
     {
