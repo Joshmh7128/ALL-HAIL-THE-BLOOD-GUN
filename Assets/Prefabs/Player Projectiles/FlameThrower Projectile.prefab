@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1388339613070403364}
   - component: {fileID: 5247721545065195822}
   - component: {fileID: 4381905011831284958}
-  - component: {fileID: 2355389251841012617}
+  - component: {fileID: -3545740169828244346}
   m_Layer: 0
-  m_Name: Slugger Bullet
+  m_Name: FlameThrower Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.8, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7f13b2a099304e04a96749b44999bff7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7132147f5cd9be542a82a83de93e1a12, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,13 +98,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6ad5c54b01583f43ac4c8c283decc61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
-  size: {x: 1.14, y: 0.74}
-  drag: 7
+  speed: 10
+  size: {x: 1.09, y: 1.02}
+  drag: 5
   lifetime: 10
   damageToPlayer: 0
   damageToEnemy: 0
-  angularDrag: 0
+  angularDrag: 10
   doesShrink: 0
   shotAudioSource: {fileID: 0}
   contactFilter:
@@ -121,7 +121,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
---- !u!82 &2355389251841012617
+--- !u!82 &-3545740169828244346
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,7 +131,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ad0d9e110c68b134e9a9d277987904a0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ac304dd0578ca394d8e36cb5e977f4b3, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

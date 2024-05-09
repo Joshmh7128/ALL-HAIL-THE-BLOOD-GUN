@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Projectile : MonoBehaviour
 {
     // this is the class that handles all of our projectiles in the game
@@ -12,11 +13,19 @@ public class Projectile : MonoBehaviour
     [SerializeField] float lifetime; // how long will this bullet live in seconds?
     [SerializeField] float damageToPlayer, damageToEnemy; // damage dealt to the player and to the enemy
     [SerializeField] float angularDrag; // how much the bullet rotates overtime
+    [SerializeField] bool doesShrink; // does this projectile shrink overtime?
+    float maxLifetime;
+    [SerializeField] AudioSource shotAudioSource;
 
     private void Start()
     {
         // determine our angular drag
         angularDrag = Random.Range(-angularDrag, angularDrag);
+        maxLifetime = lifetime;
+        // play our shot
+        shotAudioSource = GetComponent<AudioSource>();
+        shotAudioSource.pitch = 1 + Random.Range(-0.05f, 0.05f);
+        shotAudioSource.Play();
     }
 
     private void FixedUpdate()
@@ -45,6 +54,12 @@ public class Projectile : MonoBehaviour
         if (Mathf.Abs(angularDrag) < 200)
             angularDrag += angularDrag * 0.25f;
         else angularDrag = 200 * Mathf.Sign(angularDrag);
+
+        // do we shrink?
+        if (doesShrink)
+        {
+            transform.localScale = Vector2.one * (lifetime / maxLifetime);
+        }
     }
 
     void ProcessLifetime()
@@ -55,6 +70,9 @@ public class Projectile : MonoBehaviour
             DestroyThisProjectile();
 
         if (speed == 0)
+            DestroyThisProjectile();
+
+        if (transform.localScale.x <= 0.001f)
             DestroyThisProjectile();
     }
 

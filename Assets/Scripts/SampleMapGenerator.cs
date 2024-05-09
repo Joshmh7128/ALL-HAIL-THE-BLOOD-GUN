@@ -8,6 +8,7 @@ public class SampleMapGenerator : MonoBehaviour
     [SerializeField] int mapSize;
     [SerializeField] List<Sprite> groundTiles;
     [SerializeField] GameObject sampleWall;
+    List<GameObject> walls = new List<GameObject>();
 
     private void Start()
     {
@@ -22,7 +23,7 @@ public class SampleMapGenerator : MonoBehaviour
         {
             for (int y = -mapSize ; y < mapSize; y++)
             {
-                if (!((x > mapSize / 1.9 && x < mapSize / 2.1) && (y > mapSize / 1.9 && y < mapSize / 2.1)))
+                if (!((x > mapSize / 1.7 && x < mapSize / 2.4) && (y > mapSize / 1.7 && y < mapSize / 2.4)))
                 {
                     GameObject sprObj = new GameObject();
                     sprObj.AddComponent<SpriteRenderer>();
@@ -31,10 +32,19 @@ public class SampleMapGenerator : MonoBehaviour
                     sprObj.transform.parent = transform;
                     // place either a wall or an enemy, this way we can't have both occur on the same tile
                     int j = Random.Range(0, 100);
-                    if (j <= 1) Instantiate(sampleWall, new Vector3(x, y, -1), Quaternion.identity, transform);
+                    if (j <= 1) walls.Add(Instantiate(sampleWall, new Vector3(x, y, -1), Quaternion.identity, transform));
                     // reuse this for enemy spawns later
-                    if (j >= 99) Instantiate(sampleWall, new Vector3(x, y, -1), Quaternion.identity, transform);
+                    if (j >= 99) walls.Add(Instantiate(sampleWall, new Vector3(x, y, -1), Quaternion.identity, transform));
                 }
+            }
+        }
+    
+        // check to make sure no walls are placed over the player
+        foreach (GameObject wall in walls)
+        {
+            if (Vector2.Distance(wall.transform.position, PlayerController.instance.transform.position) < 5)
+            {
+                Destroy(wall);
             }
         }
     }

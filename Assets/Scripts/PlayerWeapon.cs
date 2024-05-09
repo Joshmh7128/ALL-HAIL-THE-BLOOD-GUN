@@ -19,7 +19,7 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] float burstRate; // the amount of time between each bullet during a burst
     [SerializeField] bool isAutomatic; // is this weapon automatic?
     [SerializeField] float inaccuracy; // how inaccurate is this weapon?
-    [SerializeField] AudioSource shotAudioSource, reloadAudioSource;
+    [SerializeField] AudioSource reloadAudioSource;
 
     private void Start()
     {
@@ -118,10 +118,6 @@ public class PlayerWeapon : MonoBehaviour
             fired.transform.localEulerAngles.y,
             fired.transform.localEulerAngles.z + Random.Range(-inaccuracy, inaccuracy)
             );
-
-        // play our shot
-        shotAudioSource.pitch = 1 + Random.Range(-0.05f, 0.05f);
-        shotAudioSource.Play();
     }
 
     IEnumerator QueueShot(float time)
