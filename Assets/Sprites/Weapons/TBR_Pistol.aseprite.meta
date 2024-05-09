@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b7ec4c97673465b41a992717f15e0a7f
+guid: ada43467c1300a34cae499e1750235fe
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,9 +121,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Weapon Sprite Sheet
+  - name: TBR_Pistol
     originalName: 
-    pivot: {x: 0.5, y: -1.6516855}
+    pivot: {x: 0.1328976, y: 0.71910113}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -132,7 +132,7 @@ ScriptedImporter:
       y: 4
       width: 459
       height: 89
-    spriteID: f3d4e1e8aeb80b54a946e964b5bf0971
+    spriteID: 956564670d47af8438736b8cf816c7b0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,24 +144,24 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -23388320
-    name: Weapon Sprite Sheet
+    guid: 800490380
+    name: TBR_Pistol
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Weapon Sprite Sheet
+    - name: TBR_Pistol
       frameIndex: 0
       cellRect:
-        x: 0
-        y: 147
+        x: -50
+        y: -64
         width: 459
         height: 89
-      spriteId: f3d4e1e8aeb80b54a946e964b5bf0971
+      spriteId: 956564670d47af8438736b8cf816c7b0
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 459, y: 236}
+  canvasSize: {x: 22, y: 23}

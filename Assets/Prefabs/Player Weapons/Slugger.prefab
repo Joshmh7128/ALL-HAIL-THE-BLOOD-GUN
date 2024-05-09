@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 8459435860493001658}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2, y: 0, z: 0}
+  m_LocalPosition: {x: 1.288, y: 0.129, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43,9 +43,9 @@ GameObject:
   - component: {fileID: 5627099876785605421}
   - component: {fileID: 6550857228521006814}
   - component: {fileID: 2223415868846181623}
-  - component: {fileID: -365490932260496276}
+  - component: {fileID: -658222389394932053}
   m_Layer: 0
-  m_Name: Assault Rifle
+  m_Name: Slugger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,16 +79,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dea793c40cd88f49b7eeb9bbe2faab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 7724631447703002819, guid: e9ba5860ec4e5424eb99e5eda805e3f2, type: 3}
+  projectile: {fileID: 7724631447703002819, guid: 170168df09f528e49a6e886adf720354, type: 3}
   firePoint: {fileID: 5229901335011440084}
-  fireRate: 0.4
+  fireRate: 1
   currentFireRate: 0
-  burstAmount: 3
-  burstRate: 0.1
+  burstAmount: 1
+  burstRate: 0
   isAutomatic: 0
-  inaccuracy: 10
+  inaccuracy: 0
   shotAudioSource: {fileID: 2223415868846181623}
-  reloadAudioSource: {fileID: -365490932260496276}
+  reloadAudioSource: {fileID: -658222389394932053}
 --- !u!212 &6550857228521006814
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -130,7 +130,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 397408cfea9a30e45b08cb4fe4cb235b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 19812aa2c54ac104bb5c3f6ffcd7996e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -237,7 +237,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &-365490932260496276
+--- !u!82 &-658222389394932053
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -247,7 +247,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 318ab1f00ccd86a4193022475065e876, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -18,14 +19,13 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] float burstRate; // the amount of time between each bullet during a burst
     [SerializeField] bool isAutomatic; // is this weapon automatic?
     [SerializeField] float inaccuracy; // how inaccurate is this weapon?
-    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioSource shotAudioSource, reloadAudioSource;
 
     private void Start()
     {
         controller = PlayerController.instance;
         cursor = PlayerCursor.instance;
         ourSprite = GetComponent<SpriteRenderer>();
-        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -99,6 +99,10 @@ public class PlayerWeapon : MonoBehaviour
         {
             Debug.Log("requesting queue shot");
             StartCoroutine(QueueShot(burstRate * i));
+
+            // on our last shot, queue the reload sound playback
+            if (i == burstAmount-1)
+                StartCoroutine(QueueReloadSound());
         }
     }
 
@@ -116,8 +120,8 @@ public class PlayerWeapon : MonoBehaviour
             );
 
         // play our shot
-        audioSource.pitch = 1 + Random.Range(-0.05f, 0.05f);
-        audioSource.Play();
+        shotAudioSource.pitch = 1 + Random.Range(-0.05f, 0.05f);
+        shotAudioSource.Play();
     }
 
     IEnumerator QueueShot(float time)
@@ -125,6 +129,12 @@ public class PlayerWeapon : MonoBehaviour
         Debug.Log("queuing shot");
         yield return new WaitForSeconds(time);
         FireShot();
+    }
+
+    IEnumerator QueueReloadSound()
+    {
+        yield return new WaitForSecondsRealtime(0.25f);
+        reloadAudioSource.Play();
     }
 
     void ManageFirerate()

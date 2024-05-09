@@ -36,6 +36,8 @@ public class Projectile : MonoBehaviour
         // then slow down our speed
         if (speed > 0)
             speed -= drag * Time.deltaTime;
+        if (speed < 0)
+            speed = 0;
 
         // process our angular drag, determined in the start function
         transform.localEulerAngles += new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, angularDrag * Time.deltaTime);

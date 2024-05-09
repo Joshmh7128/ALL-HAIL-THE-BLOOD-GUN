@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ada43467c1300a34cae499e1750235fe
+guid: f830b92f420c7e54e94449a9d9fb06a5
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,9 +121,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Pistol
+  - name: TBR_SMG
     originalName: 
-    pivot: {x: 0.1328976, y: 0.71910113}
+    pivot: {x: 0.708061, y: 0.71910113}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -132,7 +132,7 @@ ScriptedImporter:
       y: 4
       width: 459
       height: 89
-    spriteID: d2ee4a4ed3efb1c4f83b06601079cf17
+    spriteID: d3f7c7d484a3f9c4b886fddb821d640c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,20 +144,20 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 2145450889
-    name: Pistol
+    guid: 1769545664
+    name: TBR_SMG
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Pistol
+    - name: TBR_SMG
       frameIndex: 0
       cellRect:
-        x: -50
+        x: -314
         y: -64
         width: 459
         height: 89
-      spriteId: d2ee4a4ed3efb1c4f83b06601079cf17
+      spriteId: d3f7c7d484a3f9c4b886fddb821d640c
     linkedCells: []
     parentIndex: -1
   platformSettings: []
