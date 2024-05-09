@@ -405,6 +405,37 @@ MonoBehaviour:
   player: {fileID: 1800649184}
   cursor: {fileID: 390027579}
   spread: 0.4
+--- !u!1 &588375778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 588375779}
+  m_Layer: 0
+  m_Name: Firepoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &588375779
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588375778}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1254370615}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,7 +668,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 588375779}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1254370616
@@ -660,7 +692,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e823cd5b5d27c0f4b8256e7c12ee3e6d, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -704,6 +736,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dea793c40cd88f49b7eeb9bbe2faab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectile: {fileID: 7724631447703002819, guid: e9ba5860ec4e5424eb99e5eda805e3f2, type: 3}
+  firePoint: {fileID: 588375779}
+  fireRate: 0.25
+  burstAmount: 0
 --- !u!1 &1578861745
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,7 +820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c2c6c78d678ca341b05ee60d9e12a2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 7
   playerBoxFootprint: 1.15
   animationController: {fileID: 813939970}
 --- !u!4 &1800649184
@@ -876,9 +912,9 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 619394802}
+  - {fileID: 1254370615}
   - {fileID: 1800649184}
   - {fileID: 1578861747}
   - {fileID: 390027579}
   - {fileID: 576283912}
-  - {fileID: 1254370615}
   - {fileID: 1897260815}
