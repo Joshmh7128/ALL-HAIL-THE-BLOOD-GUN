@@ -52,9 +52,10 @@ public class Projectile : MonoBehaviour
         lifetime -= Time.deltaTime;
 
         if (lifetime <= 0)
-        {
             DestroyThisProjectile();
-        }
+
+        if (speed == 0)
+            DestroyThisProjectile();
     }
 
     void DestroyThisProjectile()
