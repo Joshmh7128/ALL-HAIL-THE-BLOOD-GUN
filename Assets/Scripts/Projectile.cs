@@ -11,6 +11,13 @@ public class Projectile : MonoBehaviour
     [SerializeField] float drag; // how much the bullet slows down overtime
     [SerializeField] float lifetime; // how long will this bullet live in seconds?
     [SerializeField] float damageToPlayer, damageToEnemy; // damage dealt to the player and to the enemy
+    [SerializeField] float angularDrag; // how much the bullet rotates overtime
+
+    private void Start()
+    {
+        // determine our angular drag
+        angularDrag = Random.Range(-angularDrag, angularDrag);
+    }
 
     private void FixedUpdate()
     {
@@ -29,6 +36,13 @@ public class Projectile : MonoBehaviour
         // then slow down our speed
         if (speed > 0)
             speed -= drag * Time.deltaTime;
+
+        // process our angular drag, determined in the start function
+        transform.localEulerAngles += new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, angularDrag * Time.deltaTime);
+        // increase our angular drag overtime
+        if (Mathf.Abs(angularDrag) < 200)
+            angularDrag += angularDrag * 0.25f;
+        else angularDrag = 200 * Mathf.Sign(angularDrag);
     }
 
     void ProcessLifetime()

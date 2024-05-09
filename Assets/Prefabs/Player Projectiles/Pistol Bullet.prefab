@@ -103,6 +103,7 @@ MonoBehaviour:
   lifetime: 10
   damageToPlayer: 0
   damageToEnemy: 0
+  angularDrag: 0
   contactFilter:
     useTriggers: 0
     useLayerMask: 0

@@ -11,9 +11,11 @@ public class PlayerWeapon : MonoBehaviour
     [Header("Weapon Attributes")]
     [SerializeField] GameObject projectile;
     [SerializeField] Transform firePoint;
-    [SerializeField] float fireRate;
+    [SerializeField] float fireRate, currentFireRate;
     [SerializeField] int burstAmount;
-    float currentFireRate, maxFireRate;
+    [SerializeField] float burstRate; // the amount of time between each bullet during a burst
+    [SerializeField] bool isAutomatic; // is this weapon automatic?
+    [SerializeField] float inaccuracy; // how inaccurate is this weapon?
 
     private void Start()
     {
@@ -56,22 +58,66 @@ public class PlayerWeapon : MonoBehaviour
     // process the firing of our weapon
     void ProcessWeaponFiring()
     {
-        // if we are clicking left click with the mouse
-        if (Input.GetMouseButton(0) && (currentFireRate <= 0))
+        // for automatic firing
+        if (isAutomatic)
         {
-            // then shoot
-            FireWeapon();
+            // if we are clicking left click with the mouse
+            if (Input.GetMouseButton(0) && (currentFireRate <= 0))
+            {
+                // then shoot
+                FireWeapon();
+            }
+        }
+
+        // for semi-automatic firing
+        if (!isAutomatic)
+        {
+            // if we are clicking left click with the mouse
+            if (Input.GetMouseButtonDown(0) && (currentFireRate <= 0))
+            {
+                // then shoot
+                FireWeapon();
+            }
         }
     }
 
     // fire this weapon and its projectile
     void FireWeapon()
     {
+        // reset our firerate
+        currentFireRate = fireRate;
+
+        // make sure our burst amount cannot be 0
+        if (burstAmount <= 0) burstAmount = 1;
+
+        // queue up our burst
+        for (int i = 0; i < burstAmount; i++)
+        {
+            Debug.Log("requesting queue shot");
+            StartCoroutine(QueueShot(burstRate * i));
+        }
+    }
+
+    void FireShot()
+    {
         // instantiate a new projectile at the fire point
         var fired = Instantiate(projectile, firePoint.position, Quaternion.identity);
         fired.transform.right = transform.right; // make sure it is going in the right direction
-        // then reset our firerate
-        currentFireRate = fireRate;
+
+        // randomize the direction based off of our inaccuracy
+        fired.transform.localEulerAngles = new Vector3(
+            fired.transform.localEulerAngles.x,
+            fired.transform.localEulerAngles.y,
+            fired.transform.localEulerAngles.z + Random.Range(-inaccuracy, inaccuracy)
+            );
+
+    }
+
+    IEnumerator QueueShot(float time)
+    {
+        Debug.Log("queuing shot");
+        yield return new WaitForSeconds(time);
+        FireShot();
     }
 
     void ManageFirerate()
