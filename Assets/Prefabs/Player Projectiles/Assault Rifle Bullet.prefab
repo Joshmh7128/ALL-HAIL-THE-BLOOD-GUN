@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5247721545065195822}
   - component: {fileID: 4381905011831284958}
   m_Layer: 0
-  m_Name: Pistol Bullet
+  m_Name: Assault Rifle Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6ad5c54b01583f43ac4c8c283decc61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 30
   size: {x: 1.14, y: 0.74}
   drag: 0
   lifetime: 10

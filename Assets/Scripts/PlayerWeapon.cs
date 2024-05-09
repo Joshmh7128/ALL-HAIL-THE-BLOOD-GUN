@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class PlayerWeapon : MonoBehaviour
 {
     PlayerController controller;
@@ -16,12 +18,14 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] float burstRate; // the amount of time between each bullet during a burst
     [SerializeField] bool isAutomatic; // is this weapon automatic?
     [SerializeField] float inaccuracy; // how inaccurate is this weapon?
+    [SerializeField] AudioSource audioSource;
 
     private void Start()
     {
         controller = PlayerController.instance;
         cursor = PlayerCursor.instance;
         ourSprite = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -111,6 +115,9 @@ public class PlayerWeapon : MonoBehaviour
             fired.transform.localEulerAngles.z + Random.Range(-inaccuracy, inaccuracy)
             );
 
+        // play our shot
+        audioSource.pitch = 1 + Random.Range(-0.25f, 0.25f);
+        audioSource.Play();
     }
 
     IEnumerator QueueShot(float time)
