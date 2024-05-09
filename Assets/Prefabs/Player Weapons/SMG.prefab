@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 6550857228521006814}
   - component: {fileID: 2223415868846181623}
   m_Layer: 0
-  m_Name: BaseGun
+  m_Name: SMG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,12 +80,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 7724631447703002819, guid: e9ba5860ec4e5424eb99e5eda805e3f2, type: 3}
   firePoint: {fileID: 5229901335011440084}
-  fireRate: 0.25
+  fireRate: 0.075
   currentFireRate: 0
-  burstAmount: 3
-  burstRate: 0.1
-  isAutomatic: 0
-  inaccuracy: 10
+  burstAmount: 1
+  burstRate: 0
+  isAutomatic: 1
+  inaccuracy: 20
   audioSource: {fileID: 0}
 --- !u!212 &6550857228521006814
 SpriteRenderer:
@@ -128,7 +128,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 397408cfea9a30e45b08cb4fe4cb235b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b5f9b316c95c75c43a358cfc8f541e0e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

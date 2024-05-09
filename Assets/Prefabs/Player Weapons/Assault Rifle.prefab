@@ -80,7 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 7724631447703002819, guid: e9ba5860ec4e5424eb99e5eda805e3f2, type: 3}
   firePoint: {fileID: 5229901335011440084}
-  fireRate: 0.2
+  fireRate: 0.4
   currentFireRate: 0
   burstAmount: 3
   burstRate: 0.1
@@ -150,7 +150,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ad0d9e110c68b134e9a9d277987904a0, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -158,7 +158,7 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0

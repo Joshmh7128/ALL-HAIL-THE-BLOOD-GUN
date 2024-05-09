@@ -116,7 +116,7 @@ public class PlayerWeapon : MonoBehaviour
             );
 
         // play our shot
-        audioSource.pitch = 1 + Random.Range(-0.25f, 0.25f);
+        audioSource.pitch = 1 + Random.Range(-0.05f, 0.05f);
         audioSource.Play();
     }
 
